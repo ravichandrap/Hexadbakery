@@ -1,5 +1,6 @@
 package com.org.hexadbakery.user;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class InputReader implements Reader {
@@ -12,7 +13,7 @@ public class InputReader implements Reader {
 	}
 
 	public static Reader getInstance() {
-		if (reader == null)
+		if (Objects.isNull(reader))
 			reader = new InputReader();
 		return reader;
 	}
