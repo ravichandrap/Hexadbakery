@@ -8,6 +8,7 @@ import java.util.Map;
 import com.org.hexadbakery.models.Product;
 
 public class ProductParser implements Parser<Product> {
+
 	@Override
 	public Map<String, Product> parse(List<String> lines) {
 		return lines.stream().map(this::getProduct).collect(toMap(Product::getCode, product -> product));
