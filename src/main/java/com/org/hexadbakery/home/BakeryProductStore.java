@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import com.org.hexadbakery.exceptions.ReaderException;
 import com.org.hexadbakery.models.Product;
 import com.org.hexadbakery.models.ProductPrice;
 import com.org.hexadbakery.parser.Parser;
@@ -18,7 +19,7 @@ public class BakeryProductStore {
 	private static BakeryProductStore bakeryProductStore;
 	private static Map<String, Product> products;
 
-	public BakeryProductStore getInstance() {
+	public static BakeryProductStore getInstance() {
 		if (Objects.isNull(bakeryProductStore)) {
 			bakeryProductStore = new BakeryProductStore();
 		}
@@ -44,8 +45,8 @@ public class BakeryProductStore {
 					product.addProduct(productPrice.getProductSize(), productPrice.getPrice());
 				});
 			});
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (ReaderException e) {
+			System.out.println("Invalid input");
 		}
 	}
 
